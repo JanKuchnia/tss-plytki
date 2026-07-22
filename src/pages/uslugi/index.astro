@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import QuickQuoteCTA from '../../components/QuickQuoteCTA.astro';
+import { withBase } from '../../lib/base.js';
 
 import { Layers, Grid, Bath, Wrench, Home, Sun, ArrowRight } from 'lucide-react';
 
@@ -79,7 +80,7 @@ const services = [
           return (
             <div class="service-hub-card glass-card">
               <div class="card-image-side">
-                <img src={item.img} alt={item.title} />
+                <img src={withBase(item.img)} alt={item.title} />
               </div>
               <div class="card-text-side">
                 <div class="icon-title-row">
@@ -89,7 +90,7 @@ const services = [
                   <h2>{item.title}</h2>
                 </div>
                 <p>{item.desc}</p>
-                <a href={item.href} class="btn btn-primary btn-sm">
+                <a href={withBase(item.href)} class="btn btn-primary btn-sm">
                   <span>Zobacz szczegóły usługi</span>
                   <ArrowRight size={16} />
                 </a>

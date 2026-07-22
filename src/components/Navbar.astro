@@ -1,5 +1,6 @@
 ---
 import { Phone, Layers, Images, Award, Calculator, Mail, Menu, X, ChevronRight, Sparkles } from 'lucide-react';
+import { withBase } from '../lib/base.js';
 
 const navLinks = [
   { href: '/uslugi', label: 'Usługi', icon: Layers },
@@ -12,7 +13,7 @@ const navLinks = [
 
 <header class="navbar-header" id="navbar">
   <div class="container-custom navbar-container">
-    <a href="/" class="navbar-brand" aria-label="Strona główna TSS Płytki">
+    <a href={withBase('/')} class="navbar-brand" aria-label="Strona główna TSS Płytki">
       <div class="brand-logo-mark">
         <span class="logo-grid-tile primary"></span>
         <span class="logo-grid-tile secondary"></span>
@@ -31,7 +32,7 @@ const navLinks = [
           const Icon = link.icon;
           return (
             <li>
-              <a href={link.href} class="nav-link">
+              <a href={withBase(link.href)} class="nav-link">
                 <Icon size={16} class="nav-icon" />
                 <span>{link.label}</span>
               </a>
@@ -67,7 +68,7 @@ const navLinks = [
             const Icon = link.icon;
             return (
               <li>
-                <a href={link.href} class="mobile-nav-link">
+                <a href={withBase(link.href)} class="mobile-nav-link">
                   <span class="mobile-link-left">
                     <Icon size={20} class="text-gold" />
                     <span>{link.label}</span>

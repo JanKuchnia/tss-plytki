@@ -1,5 +1,6 @@
 ---
 import { Phone, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { withBase } from '../lib/base.js';
 
 interface Props {
   title?: string;
@@ -41,7 +42,7 @@ const {
             <Phone size={20} />
             <span>Zadzwoń: 603 100 978</span>
           </a>
-          <a href="/kontakt" class="btn btn-secondary btn-lg w-full">
+          <a href={withBase('/kontakt')} class="btn btn-secondary btn-lg w-full">
             <span>Formularz wyceny</span>
             <ArrowRight size={18} />
           </a>

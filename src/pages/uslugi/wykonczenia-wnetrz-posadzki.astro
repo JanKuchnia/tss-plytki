@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { withBase } from '../../lib/base.js';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import QuickQuoteCTA from '../../components/QuickQuoteCTA.astro';
@@ -82,7 +83,7 @@ const scope = [
 
         <div class="detail-sidebar">
           <div class="glass-card visual-card">
-            <img src="/images/gallery-5.png" alt="Posadzka z płytek gresowych w salonie" />
+            <img src={withBase('/images/gallery-5.png')} alt="Posadzka z płytek gresowych w salonie" />
             <div class="card-caption">
               <strong>Posadzka w Salonie</strong>
               <small>Gres wielkoformatowy na podłogowym ogrzewaniu</small>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { withBase } from '../../lib/base.js';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import QuickQuoteCTA from '../../components/QuickQuoteCTA.astro';
@@ -87,7 +88,7 @@ const scope = [
 
         <div class="detail-sidebar">
           <div class="glass-card visual-card">
-            <img src="/images/after.jpeg" alt="Gotowa łazienka z walk-in po remoncie pod klucz w Krakowie" />
+            <img src={withBase('/images/after.jpeg')} alt="Gotowa łazienka z walk-in po remoncie pod klucz w Krakowie" />
             <div class="card-caption">
               <strong>Efekt Po Remoncie</strong>
               <small>Łazienka z prysznicem walk-in, mozaiką i gierowanym narożnikiem</small>

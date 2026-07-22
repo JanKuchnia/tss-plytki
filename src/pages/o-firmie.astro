@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/base.js';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import QuickQuoteCTA from '../components/QuickQuoteCTA.astro';
@@ -61,7 +62,7 @@ const tools = [
 
         <div class="about-visual-col">
           <div class="glass-card about-card">
-            <img src="/images/gallery-11.jpeg" alt="Gierowanie krawędzi 45 stopni na słupie w gresie" />
+            <img src={withBase('/images/gallery-11.jpeg')} alt="Gierowanie krawędzi 45 stopni na słupie w gresie" />
             <div class="card-caption">
               <strong>Precyzyjny Montaż i Gierowanie 45°</strong>
               <small>Czyste krawędzie kamienne docięte tarczą diamentową</small>

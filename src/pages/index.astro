@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/base.js';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import BeforeAfterSlider from '../components/BeforeAfterSlider.jsx';
@@ -68,7 +69,7 @@ import { Phone, Images, ShieldCheck, Ruler, Award, Zap, MapPin, ArrowRight } fro
               <Phone size={20} />
               <span>Zadzwoń po bezpłatną wycenę</span>
             </a>
-            <a href="/realizacje" class="btn btn-secondary btn-lg">
+            <a href={withBase('/realizacje')} class="btn btn-secondary btn-lg">
               <Images size={20} />
               <span>Zobacz realizacje</span>
             </a>
@@ -122,7 +123,7 @@ import { Phone, Images, ShieldCheck, Ruler, Award, Zap, MapPin, ArrowRight } fro
       <Gallery client:visible limit={6} />
 
       <div class="center-cta-wrap">
-        <a href="/realizacje" class="btn btn-secondary btn-lg">
+        <a href={withBase('/realizacje')} class="btn btn-secondary btn-lg">
           <span>Zobacz wszystkie realizacje</span>
           <ArrowRight size={18} />
         </a>

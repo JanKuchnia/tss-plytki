@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calculator, Box, Percent, RefreshCw, FileText, Phone, ArrowRight, ShieldCheck, Check } from 'lucide-react';
+import { withBase } from '../lib/base.js';
 
 const TILE_SIZES = [
   { label: '60 × 60 cm', m2PerBox: 1.44, boxesEstimate: true },
@@ -129,7 +130,7 @@ export default function TileCalculator() {
         </p>
 
         <div className="calc-actions">
-          <a href="/kontakt" class="btn btn-primary btn-lg">
+          <a href={withBase('/kontakt')} class="btn btn-primary btn-lg">
             <span>Darmowa wycena montażu</span>
             <ArrowRight size={18} />
           </a>

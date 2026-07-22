@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Filter, ZoomIn, Tag, Calendar, MapPin, X, ArrowRight, Phone } from 'lucide-react';
+import { withBase } from '../lib/base.js';
 
 const GALLERY_ITEMS = [
   {
@@ -189,7 +190,7 @@ export default function Gallery({ limit }) {
           >
             <div className="card-image-wrap">
               <img 
-                src={item.image} 
+                src={withBase(item.image)}
                 alt={item.title} 
                 loading="lazy"
               />
@@ -227,7 +228,7 @@ export default function Gallery({ limit }) {
             </button>
 
             <div className="lightbox-image-wrap">
-              <img src={selectedImage.image} alt={selectedImage.title} />
+              <img src={withBase(selectedImage.image)} alt={selectedImage.title} />
             </div>
 
             <div className="lightbox-info">
@@ -240,7 +241,7 @@ export default function Gallery({ limit }) {
               <p className="lightbox-desc">{selectedImage.desc}</p>
 
               <div className="lightbox-cta-row">
-                <a href="/kontakt" className="btn btn-primary btn-sm">
+                <a href={withBase('/kontakt')} className="btn btn-primary btn-sm">
                   <span>Chcę podobny projekt</span>
                   <ArrowRight size={16} />
                 </a>

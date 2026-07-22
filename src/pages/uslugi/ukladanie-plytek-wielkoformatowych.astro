@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { withBase } from '../../lib/base.js';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import QuickQuoteCTA from '../../components/QuickQuoteCTA.astro';
@@ -82,7 +83,7 @@ const reasons = [
 
         <div class="detail-sidebar">
           <div class="glass-card visual-card">
-            <img src="/images/gallery-2.png" alt="Układanie płytek wielkoformatowych 120x120 cm w Krakowie" />
+            <img src={withBase('/images/gallery-2.png')} alt="Układanie płytek wielkoformatowych 120x120 cm w Krakowie" />
             <div class="card-caption">
               <strong>Realizacja w Krakowie</strong>
               <small>Montaż płyt gresowych 120x120 cm na posadzce z ogrzewaniem</small>
@@ -92,7 +93,7 @@ const reasons = [
           <div class="glass-card sidebar-cta-box">
             <h4>Wylicz zapotrzebowanie</h4>
             <p>Sprawdź metraż i orientacyjną liczbę kartonów w naszym kalkulatorze.</p>
-            <a href="/kalkulator" class="btn btn-secondary btn-sm w-full">
+            <a href={withBase('/kalkulator')} class="btn btn-secondary btn-sm w-full">
               <Calculator size={16} />
               <span>Otwórz kalkulator</span>
             </a>

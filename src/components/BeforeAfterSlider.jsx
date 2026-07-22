@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Sliders, Eye, MoveHorizontal } from 'lucide-react';
+import { withBase } from '../lib/base.js';
 
 export default function BeforeAfterSlider({
   beforeImage = "/images/before.jpeg",
@@ -63,7 +64,7 @@ export default function BeforeAfterSlider({
       >
         {/* After Image (Background) */}
         <img 
-          src={afterImage} 
+          src={withBase(afterImage)}
           alt={afterLabel} 
           className="after-image"
           loading="eager"
@@ -86,7 +87,7 @@ export default function BeforeAfterSlider({
           style={{ width: `${sliderPosition}%` }}
         >
           <img 
-            src={beforeImage} 
+            src={withBase(beforeImage)} 
             alt={beforeLabel} 
             className="before-image" 
             style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%' }}

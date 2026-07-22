@@ -1,5 +1,6 @@
 ---
 import { Phone, Mail, MapPin, Clock, Facebook, ChevronRight, ArrowUp, Layers, Award, Images, Calculator, FileText } from 'lucide-react';
+import { withBase } from '../lib/base.js';
 
 const currentYear = new Date().getFullYear();
 
@@ -26,7 +27,7 @@ const companyLinks = [
 
       <!-- Column 1: Brand & NAP -->
       <div class="footer-col footer-brand-col">
-        <a href="/" class="footer-logo">
+        <a href={withBase('/')} class="footer-logo">
           <span class="brand-title">TSS PŁYTKI</span>
           <span class="brand-subtitle">Władysław Kuchnia</span>
         </a>
@@ -74,7 +75,7 @@ const companyLinks = [
         <ul class="footer-links-list">
           {servicesLinks.map((link) => (
             <li>
-              <a href={link.href} class="footer-link">
+              <a href={withBase(link.href)} class="footer-link">
                 <ChevronRight size={14} class="link-chevron" />
                 <span>{link.label}</span>
               </a>
@@ -94,7 +95,7 @@ const companyLinks = [
             const Icon = link.icon;
             return (
               <li>
-                <a href={link.href} class="footer-link">
+                <a href={withBase(link.href)} class="footer-link">
                   <Icon size={14} class="link-chevron" />
                   <span>{link.label}</span>
                 </a>
