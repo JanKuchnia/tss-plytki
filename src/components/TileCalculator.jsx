@@ -211,14 +211,23 @@ export default function TileCalculator() {
           border-radius: var(--radius-md);
           color: var(--text-main);
           cursor: pointer;
-          transition: all var(--transition-normal);
+          transition: transform var(--transition-fast), border-color var(--transition-normal), background-color var(--transition-normal), color var(--transition-fast);
+          user-select: none;
+          will-change: transform;
         }
 
-        .reserve-btn:hover { border-color: var(--accent-travertine); }
+        .reserve-btn:hover { 
+          border-color: var(--accent-travertine); 
+          transform: translateY(-2px);
+        }
+        .reserve-btn:active {
+          transform: scale(0.97);
+        }
         .reserve-btn.selected {
           border-color: var(--accent-travertine);
           background-color: rgba(212, 163, 115, 0.12);
           color: var(--accent-travertine);
+          box-shadow: 0 0 12px rgba(212, 163, 115, 0.15);
         }
 
         .reserve-btn small {
@@ -244,14 +253,23 @@ export default function TileCalculator() {
           color: var(--text-main);
           font-weight: 600;
           cursor: pointer;
-          transition: all var(--transition-normal);
+          transition: transform var(--transition-fast), border-color var(--transition-normal), background-color var(--transition-normal), color var(--transition-fast);
+          user-select: none;
+          will-change: transform;
         }
 
-        .size-btn:hover { border-color: var(--accent-travertine); }
+        .size-btn:hover { 
+          border-color: var(--accent-travertine); 
+          transform: translateY(-2px);
+        }
+        .size-btn:active {
+          transform: scale(0.97);
+        }
         .size-btn.selected {
           border-color: var(--accent-travertine);
           background-color: rgba(212, 163, 115, 0.12);
           color: var(--accent-travertine);
+          box-shadow: 0 0 12px rgba(212, 163, 115, 0.15);
         }
 
         .results-panel {

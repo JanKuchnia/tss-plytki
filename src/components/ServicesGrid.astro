@@ -111,6 +111,14 @@ const services = [
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform var(--transition-normal), border-color var(--transition-normal), background-color var(--transition-normal);
+    will-change: transform;
+  }
+
+  .service-card:hover .service-icon-box {
+    border-color: var(--accent-travertine);
+    transform: scale(1.08);
+    background-color: rgba(212, 163, 115, 0.12);
   }
 
   .service-tag {
@@ -123,6 +131,12 @@ const services = [
     border: 1px solid var(--border-stone);
     border-radius: var(--radius-full);
     color: var(--text-muted);
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .service-card:hover .service-tag {
+    border-color: var(--border-gold);
+    color: var(--accent-travertine);
   }
 
   .service-card h3 {
@@ -144,9 +158,15 @@ const services = [
     font-size: 0.9rem;
     color: var(--accent-travertine);
     margin-top: 0.5rem;
+    transition: color var(--transition-fast);
   }
 
-  .btn-link:hover .link-arrow {
+  .service-card:hover .btn-link {
+    color: var(--accent-travertine-hover);
+  }
+
+  .btn-link:hover .link-arrow,
+  .service-card:hover .link-arrow {
     transform: translateX(4px);
   }
 

@@ -100,7 +100,10 @@ export default function BeforeAfterSlider({
           className="slider-divider" 
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="slider-handle" aria-label="Przesuń suwak przed i po">
+          <div 
+            className={`slider-handle ${isDragging ? 'is-active' : ''}`} 
+            aria-label="Przesuń suwak przed i po"
+          >
             <MoveHorizontal size={20} />
           </div>
         </div>
@@ -237,6 +240,19 @@ export default function BeforeAfterSlider({
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
           border: 3px solid #0D1117;
           touch-action: none;
+          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+          will-change: transform;
+        }
+
+        .before-after-container:hover .slider-handle {
+          transform: translate(-50%, -50%) scale(1.1);
+          box-shadow: 0 0 25px rgba(212, 163, 115, 0.5);
+        }
+
+        .slider-handle.is-active {
+          transform: translate(-50%, -50%) scale(1.18) !important;
+          box-shadow: 0 0 32px rgba(212, 163, 115, 0.7) !important;
+          background-color: var(--accent-travertine-hover);
         }
 
         .slider-caption {
