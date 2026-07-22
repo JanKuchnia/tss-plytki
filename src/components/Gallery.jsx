@@ -5,7 +5,7 @@ import { withBase } from '../lib/base.js';
 const GALLERY_ITEMS = [
   {
     id: 1,
-    image: '/images/gallery-1.png',
+    image: '/images/gallery-1.webp',
     title: 'Łazienka w marmurze i spiekach',
     category: 'lazienki',
     categoryLabel: 'Łazienki Pod Klucz',
@@ -14,7 +14,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 2,
-    image: '/images/gallery-2.png',
+    image: '/images/gallery-2.webp',
     title: 'Wielki Format 120x120 cm w strefie dziennej',
     category: 'wielki-format',
     categoryLabel: 'Wielki Format',
@@ -23,7 +23,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 3,
-    image: '/images/gallery-3.png',
+    image: '/images/gallery-3.webp',
     title: 'Prysznic walk-in z gierowaną wnęką',
     category: 'lazienki',
     categoryLabel: 'Łazienki Pod Klucz',
@@ -32,7 +32,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 4,
-    image: '/images/gallery-4.png',
+    image: '/images/gallery-4.webp',
     title: 'Nowoczesna łazienka z podświetleniem LED',
     category: 'lazienki',
     categoryLabel: 'Łazienki Pod Klucz',
@@ -41,7 +41,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 5,
-    image: '/images/gallery-5.png',
+    image: '/images/gallery-5.webp',
     title: 'Posadzka gresowa w salonie',
     category: 'posadzki',
     categoryLabel: 'Kuchnie & Posadzki',
@@ -50,7 +50,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 6,
-    image: '/images/gallery-6.png',
+    image: '/images/gallery-6.webp',
     title: 'Precyzyjna linia fugi i symetria',
     category: 'wielki-format',
     categoryLabel: 'Wielki Format',
@@ -59,7 +59,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 7,
-    image: '/images/gallery-7-hotel-tribe-krakow.jpeg',
+    image: '/images/gallery-7-hotel-tribe-krakow.webp',
     title: 'Hotel TRIBE Kraków — Realizacja komercyjna',
     category: 'komercyjne',
     categoryLabel: 'Tarasy & Komercyjne',
@@ -68,7 +68,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 8,
-    image: '/images/gallery-8.jpeg',
+    image: '/images/gallery-8.webp',
     title: 'Fartuch kuchenny z mozaiką',
     category: 'posadzki',
     categoryLabel: 'Kuchnie & Posadzki',
@@ -77,7 +77,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 9,
-    image: '/images/gallery-9.jpeg',
+    image: '/images/gallery-9.webp',
     title: 'Taras zewnętrzny z gresu mrozoodpornego',
     category: 'komercyjne',
     categoryLabel: 'Tarasy & Komercyjne',
@@ -86,7 +86,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 10,
-    image: '/images/gallery-10.jpeg',
+    image: '/images/gallery-10.webp',
     title: 'Wykończenie strefy umywalkowej',
     category: 'lazienki',
     categoryLabel: 'Łazienki Pod Klucz',
@@ -95,7 +95,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 11,
-    image: '/images/gallery-11.jpeg',
+    image: '/images/gallery-11.webp',
     title: 'Gierowanie krawędzi 45° na słupie',
     category: 'wielki-format',
     categoryLabel: 'Wielki Format',
@@ -104,7 +104,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 12,
-    image: '/images/gallery-12.jpeg',
+    image: '/images/gallery-12.webp',
     title: 'Wylewka samopoziomująca i laser',
     category: 'posadzki',
     categoryLabel: 'Kuchnie & Posadzki',
@@ -113,7 +113,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 13,
-    image: '/images/gallery-13.jpeg',
+    image: '/images/gallery-13.webp',
     title: 'Hydroizolacja płynną folią i taśmami',
     category: 'lazienki',
     categoryLabel: 'Łazienki Pod Klucz',
@@ -122,7 +122,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 14,
-    image: '/images/gallery-14.jpeg',
+    image: '/images/gallery-14.webp',
     title: 'Schody wewnętrzne wykończone gresem',
     category: 'posadzki',
     categoryLabel: 'Kuchnie & Posadzki',
@@ -131,7 +131,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 15,
-    image: '/images/gallery-15.jpeg',
+    image: '/images/gallery-15.webp',
     title: 'Obudowa kominka z wielkoformatowych płyt',
     category: 'wielki-format',
     categoryLabel: 'Wielki Format',

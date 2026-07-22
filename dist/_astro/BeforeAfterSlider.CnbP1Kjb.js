@@ -1,119 +1,19 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { Sliders, Eye, MoveHorizontal } from 'lucide-react';
-import { withBase } from '../lib/base.js';
-
-export default function BeforeAfterSlider({
-  beforeImage = "/images/before.webp",
-  afterImage = "/images/after.webp",
-  beforeLabel = "Stan surowy / Wyburzenia",
-  afterLabel = "Gotowa łazienka z gierowaniem 45°",
-  shortBeforeLabel = "Stan surowy",
-  shortAfterLabel = "Gotowa łazienka",
-  caption = "Przesuń suwak, by zobaczyć przemianę — od skucia starych płytek po gotową łazienkę z gierowanym narożnikiem."
-}) {
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef(null);
-
-  const handleMove = useCallback((clientX) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    let percentage = (x / rect.width) * 100;
-    if (percentage < 0) percentage = 0;
-    if (percentage > 100) percentage = 100;
-    setSliderPosition(percentage);
-  }, []);
-
-  const handleTouchMove = useCallback((e) => {
-    if (!isDragging) return;
-    handleMove(e.touches[0].clientX);
-  }, [isDragging, handleMove]);
-
-  const handleMouseMove = useCallback((e) => {
-    if (!isDragging) return;
-    handleMove(e.clientX);
-  }, [isDragging, handleMove]);
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  useEffect(() => {
-    if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-      window.addEventListener('touchmove', handleTouchMove, { passive: false });
-      window.addEventListener('touchend', handleMouseUp);
-    }
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleMouseUp);
-    };
-  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove]);
-
-  return (
-    <div className="before-after-wrapper">
-      <div 
-        ref={containerRef}
-        className="before-after-container"
-        onMouseDown={() => setIsDragging(true)}
-        onTouchStart={() => setIsDragging(true)}
-      >
-        {/* After Image (Background) */}
-        <img 
-          src={withBase(afterImage)}
-          alt={afterLabel} 
-          className="after-image"
-          loading="eager"
-        />
-        {/* Stationary Top Labels */}
-        <span className="slider-label label-before">
-          <Sliders size={14} className="label-icon" />
-          <span className="label-text-full">{beforeLabel}</span>
-          <span className="label-text-short">{shortBeforeLabel}</span>
-        </span>
-        <span className="slider-label label-after">
-          <Eye size={14} className="icon-gold label-icon" />
-          <span className="label-text-full">{afterLabel}</span>
-          <span className="label-text-short">{shortAfterLabel}</span>
-        </span>
-
-        {/* Before Image (Clipped Foreground) */}
-        <div 
-          className="before-image-clip" 
-          style={{ width: `${sliderPosition}%` }}
-        >
-          <img 
-            src={withBase(beforeImage)} 
-            alt={beforeLabel} 
-            className="before-image" 
-            style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%' }}
-            loading="eager"
-          />
-        </div>
-
-        {/* Divider Bar & Handle */}
-        <div 
-          className="slider-divider" 
-          style={{ left: `${sliderPosition}%` }}
-        >
-          <div className="slider-handle" aria-label="Przesuń suwak przed i po">
-            <MoveHorizontal size={20} />
-          </div>
-        </div>
-      </div>
-
-      {caption && (
-        <p className="slider-caption">
-          <Sliders size={15} className="caption-icon" />
-          <span>{caption}</span>
-        </p>
-      )}
-
-      <style>{`
+import{c as p,j as e}from"./createLucideIcon.Bu8kSKCY.js";import{r}from"./index.CVf8TyFT.js";import{w as b}from"./base.BT99lU2e.js";/**
+ * @license lucide-react v0.439.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const j=p("Eye",[["path",{d:"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",key:"1nclc0"}],["circle",{cx:"12",cy:"12",r:"3",key:"1v7zrd"}]]);/**
+ * @license lucide-react v0.439.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const N=p("MoveHorizontal",[["polyline",{points:"18 8 22 12 18 16",key:"1hqrds"}],["polyline",{points:"6 8 2 12 6 16",key:"f0ernq"}],["line",{x1:"2",x2:"22",y1:"12",y2:"12",key:"1dnqot"}]]);/**
+ * @license lucide-react v0.439.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const g=p("SlidersVertical",[["line",{x1:"4",x2:"4",y1:"21",y2:"14",key:"1p332r"}],["line",{x1:"4",x2:"4",y1:"10",y2:"3",key:"gb41h5"}],["line",{x1:"12",x2:"12",y1:"21",y2:"12",key:"hf2csr"}],["line",{x1:"12",x2:"12",y1:"8",y2:"3",key:"1kfi7u"}],["line",{x1:"20",x2:"20",y1:"21",y2:"16",key:"1lhrwl"}],["line",{x1:"20",x2:"20",y1:"12",y2:"3",key:"16vvfq"}],["line",{x1:"2",x2:"6",y1:"14",y2:"14",key:"1uebub"}],["line",{x1:"10",x2:"14",y1:"8",y2:"8",key:"1yglbp"}],["line",{x1:"18",x2:"22",y1:"16",y2:"16",key:"1jxqpz"}]]);function q({beforeImage:w="/images/before.webp",afterImage:y="/images/after.webp",beforeLabel:x="Stan surowy / Wyburzenia",afterLabel:m="Gotowa łazienka z gierowaniem 45°",shortBeforeLabel:v="Stan surowy",shortAfterLabel:k="Gotowa łazienka",caption:f="Przesuń suwak, by zobaczyć przemianę — od skucia starych płytek po gotową łazienkę z gierowanym narożnikiem."}){const[u,z]=r.useState(50),[t,l]=r.useState(!1),i=r.useRef(null),s=r.useCallback(o=>{if(!i.current)return;const h=i.current.getBoundingClientRect();let n=(o-h.left)/h.width*100;n<0&&(n=0),n>100&&(n=100),z(n)},[]),d=r.useCallback(o=>{t&&s(o.touches[0].clientX)},[t,s]),c=r.useCallback(o=>{t&&s(o.clientX)},[t,s]),a=r.useCallback(()=>{l(!1)},[]);return r.useEffect(()=>(t&&(window.addEventListener("mousemove",c),window.addEventListener("mouseup",a),window.addEventListener("touchmove",d,{passive:!1}),window.addEventListener("touchend",a)),()=>{window.removeEventListener("mousemove",c),window.removeEventListener("mouseup",a),window.removeEventListener("touchmove",d),window.removeEventListener("touchend",a)}),[t,c,a,d]),e.jsxs("div",{className:"before-after-wrapper",children:[e.jsxs("div",{ref:i,className:"before-after-container",onMouseDown:()=>l(!0),onTouchStart:()=>l(!0),children:[e.jsx("img",{src:b(y),alt:m,className:"after-image",loading:"eager"}),e.jsxs("span",{className:"slider-label label-before",children:[e.jsx(g,{size:14,className:"label-icon"}),e.jsx("span",{className:"label-text-full",children:x}),e.jsx("span",{className:"label-text-short",children:v})]}),e.jsxs("span",{className:"slider-label label-after",children:[e.jsx(j,{size:14,className:"icon-gold label-icon"}),e.jsx("span",{className:"label-text-full",children:m}),e.jsx("span",{className:"label-text-short",children:k})]}),e.jsx("div",{className:"before-image-clip",style:{width:`${u}%`},children:e.jsx("img",{src:b(w),alt:x,className:"before-image",style:{width:i.current?`${i.current.offsetWidth}px`:"100%"},loading:"eager"})}),e.jsx("div",{className:"slider-divider",style:{left:`${u}%`},children:e.jsx("div",{className:"slider-handle","aria-label":"Przesuń suwak przed i po",children:e.jsx(N,{size:20})})})]}),f&&e.jsxs("p",{className:"slider-caption",children:[e.jsx(g,{size:15,className:"caption-icon"}),e.jsx("span",{children:f})]}),e.jsx("style",{children:`
         .before-after-wrapper {
           width: 100%;
         }
@@ -286,7 +186,4 @@ export default function BeforeAfterSlider({
             padding: 0 0.25rem;
           }
         }
-      `}</style>
-    </div>
-  );
-}
+      `})]})}export{q as default};
