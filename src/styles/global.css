@@ -236,6 +236,22 @@ img {
   border-radius: var(--radius-lg);
 }
 
+@media (max-width: 640px) {
+  .container-custom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .btn {
+    white-space: normal;
+    word-break: break-word;
+    max-width: 100%;
+  }
+  .btn-lg {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
 /* Badges */
 .badge {
   display: inline-flex;

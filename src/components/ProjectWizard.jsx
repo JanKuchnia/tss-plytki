@@ -688,9 +688,19 @@ export default function ProjectWizard() {
         }
 
         @media (max-width: 640px) {
-          .wizard-card { padding: 1.5rem; }
+          .wizard-card { padding: 1.25rem 1rem; }
           .inputs-grid { grid-template-columns: 1fr; }
           .full-width { grid-column: span 1; }
+          .step-indicator { gap: 0.75rem; }
+          .step-dot { width: 32px; height: 32px; font-size: 0.85rem; }
+          .wizard-controls {
+            flex-direction: column-reverse;
+            gap: 0.75rem;
+          }
+          .wizard-controls .btn {
+            width: 100%;
+            justify-content: center;
+          }
         }
       `}</style>
     </div>
