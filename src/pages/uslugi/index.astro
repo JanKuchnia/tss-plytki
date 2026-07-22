@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import QuickQuoteCTA from '../../components/QuickQuoteCTA.astro';
+
+import { Layers, Grid, Bath, Wrench, Home, Sun, ArrowRight } from 'lucide-react';
+
+const services = [
+  {
+    icon: Grid,
+    title: '1. Układanie Płytek Wielkoformatowych',
+    desc: 'Płyty gresowe i spieki kwarcowe 120×120 cm i 120×240 cm wymagają innego podejścia niż standardowa płytka — sztywnego podłoża, montażu próżniowego i wąskiej spoiny. Zajmujemy się tym od przygotowania podłoża po docięcie ostatniej płyty.',
+    href: '/uslugi/ukladanie-plytek-wielkoformatowych',
+    img: '/images/gallery-2.png'
+  },
+  {
+    icon: Bath,
+    title: '2. Remonty Łazienek Pod Klucz',
+    desc: 'Skucie starych płytek, korekty instalacji wodno-kanalizacyjnej i elektrycznej, odpływ liniowy pod prysznicem, hydroizolacja folią w płynie i biały montaż na koniec — jeden harmonogram, jedna ekipa.',
+    href: '/uslugi/remonty-lazienek-pod-klucz',
+    img: '/images/gallery-1.png'
+  },
+  {
+    icon: Wrench,
+    title: '3. Cięcie Precyzyjne i Gierowanie 45°',
+    desc: 'Docinanie płytek diamentowym ostrzem pod kątem 45° i łączenie narożników bez plastikowych ani metalowych profili. Czystszy efekt wizualny, trwalszy na lata.',
+    href: '/uslugi/ciecie-45-gierowanie',
+    img: '/images/gallery-12.jpeg'
+  },
+  {
+    icon: Home,
+    title: '4. Wykończenia Wnętrz i Posadzki',
+    desc: 'Podłogi w salonach i kuchniach, fartuchy kuchenne, okładziny kominków, schody — z fugą cementową lub epoksydową w zależności od obciążenia pomieszczenia.',
+    href: '/uslugi/wykonczenia-wnetrz-posadzki',
+    img: '/images/gallery-5.png'
+  },
+  {
+    icon: Sun,
+    title: '5. Hydroizolacja i Tarasy / Balkony',
+    desc: 'Membrany uszczelniające w płynie, taśmy dylatacyjne, profile okapowe i mrozoodporny gres na zewnątrz — przygotowane na polską zimę, nie tylko na lato.',
+    href: '/uslugi/hydroizolacja-tarasy-balkony',
+    img: '/images/gallery-9.jpeg'
+  },
+  {
+    icon: Layers,
+    title: '6. Wylewki i Przygotowanie Podłoża',
+    desc: 'Szlifowanie powierzchni, gruntowanie, wylewki samopoziomujące i kontrola poziomu laserem przed ułożeniem płyt wielkoformatowych — fundament, którego nie widać, ale bez którego nic się nie trzyma.',
+    href: '/uslugi/wylewki-samopoziomujace',
+    img: '/images/gallery-12.jpeg'
+  }
+];
+---
+
+<Layout 
+  title="Usługi Glazurnicze i Wykończeniowe | TSS Płytki Kraków"
+  description="Układanie płytek, remonty łazienek, gierowanie 45°, hydroizolacja, posadzki i wylewki — pełna oferta TSS Płytki w Krakowie i Małopolsce."
+>
+  <Navbar slot="navbar" />
+
+  <section class="page-hero section-padding">
+    <div class="container-custom">
+      <div class="hero-badge">
+        <Layers size={16} class="text-gold" />
+        <span>Pełna Oferta Usługowa</span>
+      </div>
+      <h1>Usługi glazurnicze i wykończeniowe</h1>
+      <p class="page-intro">
+        Sześć specjalizacji, które razem pokrywają cały proces — od surowej wylewki po gotową, wypolerowaną łazienkę. Możesz zamówić pojedynczą usługę albo pełny remont pod klucz.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-surface-wrap">
+    <div class="container-custom">
+      <div class="services-list-wrapper">
+        {services.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="service-hub-card glass-card">
+              <div class="card-image-side">
+                <img src={item.img} alt={item.title} />
+              </div>
+              <div class="card-text-side">
+                <div class="icon-title-row">
+                  <div class="icon-box">
+                    <Icon size={22} class="text-gold" />
+                  </div>
+                  <h2>{item.title}</h2>
+                </div>
+                <p>{item.desc}</p>
+                <a href={item.href} class="btn btn-primary btn-sm">
+                  <span>Zobacz szczegóły usługi</span>
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <QuickQuoteCTA 
+    title="Nie wiesz, której usługi potrzebujesz?" 
+    subtitle="Opisz Twój projekt w krótkiej wiadomości — przeanalizujemy zakres prac i doradzimy najlepsze rozwiązanie."
+  />
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    background: radial-gradient(circle at 50% 20%, rgba(212, 163, 115, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--accent-travertine);
+    margin-bottom: 1rem;
+  }
+
+  .page-intro {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    max-width: 780px;
+    margin: 1rem auto 0 auto;
+    color: var(--text-muted);
+  }
+
+  .bg-surface-wrap {
+    background-color: #0B0E14;
+    border-top: 1px solid var(--border-stone);
+    border-bottom: 1px solid var(--border-stone);
+  }
+
+  .services-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .service-hub-card {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 2rem;
+    padding: 0;
+    overflow: hidden;
+
+  }
+
+  .card-image-side {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+
+  }
+
+  .card-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-text-side {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .icon-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-stone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .card-text-side h2 {
+    font-size: 1.35rem;
+    color: var(--text-main);
+  }
+
+  .card-text-side p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .service-hub-card {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

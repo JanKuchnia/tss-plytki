@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import QuickQuoteCTA from '../components/QuickQuoteCTA.astro';
+
+import { Award, CheckCircle2, Phone, Mail, MapPin, Wrench, ShieldCheck, Ruler, Layers, ArrowRight } from 'lucide-react';
+
+const tools = [
+  'Poziomice laserowe do kontroli równości podłoża i ścian przed montażem',
+  'Piły chłodzone wodą z tarczami diamentowymi do gierowania под kątem 45°',
+  'Podnośniki i przyssawki próżniowe do bezpiecznego układania płyt wielkoformatowych (120×120, 120×240 cm)',
+  'Cięcie na mokro — ograniczenie pyłu krzemowego na placu budowy',
+  'Systemy poziomujące (kliny, klipsy) eliminujące uskoki i różnice wysokości'
+];
+---
+
+<Layout 
+  title="O firmie | TSS Płytki — Władysław Kuchnia, Kraków"
+  description="Poznaj TSS Płytki — Władysława Kuchnię i zespół specjalizujący się w precyzyjnym układaniu płytek i remontach łazienek w Krakowie i Małopolsce."
+>
+  <Navbar slot="navbar" />
+
+  <section class="page-hero section-padding">
+    <div class="container-custom">
+      <div class="hero-badge">
+        <Award size={16} class="text-gold" />
+        <span>O Firmie & Rzemiośle</span>
+      </div>
+      <h1>Rzemiosło, które ma podpis</h1>
+      <p class="page-intro">
+        TSS Płytki to firma Władysława Kuchni. Zajmujemy się układaniem płytek, remontami łazienek pod klucz i wykończeniami wnętrz — od pierwszego pomiaru po ostatnią fugę, bez podzlecania etapów przypadkowym ekipom.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-surface-wrap">
+    <div class="container-custom">
+      <div class="about-grid">
+        
+        <div class="about-text-col">
+          <div class="content-block">
+            <span class="badge badge-gold">Filozofia Precyzji</span>
+            <h2>Jakość, którą widać po latach</h2>
+            <p>
+              Płytka, która nie leży idealnie w poziomie, widać od razu — i widać ją jeszcze bardziej po roku, kiedy zaczyna się odklejać na krawędzi. Dlatego każdy projekt zaczyna się od kontroli podłoża poziomicą laserową, a każdy narożnik kończy się gierowaniem 45°, nie plastikową listwą. To więcej pracy na etapie przygotowania — i mniej reklamacji po odbiorze.
+            </p>
+          </div>
+
+          <div class="content-block">
+            <span class="badge badge-gold">Doświadczenie</span>
+            <h2>25 lat doświadczenia w zawodzie, firma od 2023</h2>
+            <p>
+              Władysław Kuchnia pracuje w branży glazurniczo-remontowej od ponad 25 lat, zdobywając doświadczenie w różnych firmach na terenie Małopolski. TSS Płytki jako własna działalność powstała w 2023 roku — to nowa marka, ale nie nowe ręce: standard wykonania, o którym mowa, jest efektem ćwierćwiecza praktyki.
+            </p>
+            <p className="margin-top-sm">
+              Wprawa po 25 latach w zawodzie przekłada się bezpośrednio na czas realizacji — bez pomijania etapów, po prostu mniej przestojów i błędów do poprawiania po drodze.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-visual-col">
+          <div class="glass-card about-card">
+            <img src="/images/gallery-11.jpeg" alt="Gierowanie krawędzi 45 stopni na słupie w gresie" />
+            <div class="card-caption">
+              <strong>Precyzyjny Montaż i Gierowanie 45°</strong>
+              <small>Czyste krawędzie kamienne docięte tarczą diamentową</small>
+            </div>
+          </div>
+
+          <div class="glass-card tools-box">
+            <h4>
+              <Wrench size={20} class="text-gold" />
+              <span>Narzędzia i Metoda Pracy</span>
+            </h4>
+            <ul class="tools-list">
+              {tools.map(t => (
+                <li>
+                  <CheckCircle2 size={18} class="text-gold tool-icon" />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="local-trust-box glass-card text-center">
+        <span class="badge badge-gold">Lokalnie Bez Pośredników</span>
+        <h2>Jeden kontakt, jedna odpowiedzialność</h2>
+        <p class="max-w-700">
+          Firma zarejestrowana jest w Węglówce (NIP: 681-135-28-13), w gminie Wiśniowa — ale najwięcej realizacji kończymy w Krakowie, dojeżdżając też do Myślenic, Dobczyce, Rabki-Zdroju, Mszany Dolnej i Limanowej. Brak pośredników i podwykonawców oznacza jeden kontakt od wyceny po odbiór.
+        </p>
+
+        <div class="nip-badge">
+          <span>NIP: 681-135-28-13 · REGON · Węglówka 104</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QuickQuoteCTA 
+    title="Masz pytanie o Twój projekt remontowy?" 
+    subtitle="Zadzwoń bezpośrednio do Władysława Kuchni lub napisz wiadomość przez formularz wyceny."
+  />
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    background: radial-gradient(circle at 50% 20%, rgba(212, 163, 115, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--accent-travertine);
+    margin-bottom: 1rem;
+  }
+
+  .page-intro {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    max-width: 800px;
+    margin: 1rem auto 0 auto;
+    color: var(--text-muted);
+  }
+
+  .bg-surface-wrap {
+    background-color: #0B0E14;
+    border-top: 1px solid var(--border-stone);
+    border-bottom: 1px solid var(--border-stone);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3.5rem;
+    align-items: flex-start;
+  }
+
+  .content-block {
+    margin-bottom: 3rem;
+  }
+
+  .content-block h2 {
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-block p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .margin-top-sm {
+    margin-top: 1rem;
+  }
+
+  .about-visual-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .about-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .about-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .card-caption {
+    padding: 1.25rem;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-stone);
+  }
+
+  .card-caption strong {
+    display: block;
+    color: var(--text-main);
+  }
+
+  .card-caption small {
+    color: var(--text-muted);
+  }
+
+  .tools-box {
+    padding: 1.75rem;
+  }
+
+  .tools-box h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tools-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .tools-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.925rem;
+    color: var(--text-main);
+  }
+
+  .tool-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .local-trust-box {
+    padding: 3.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .text-center { text-align: center; }
+  .max-w-700 { max-width: 700px; line-height: 1.7; }
+
+  .nip-badge {
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-stone);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-travertine);
+  }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>

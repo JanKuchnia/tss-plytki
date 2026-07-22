@@ -1,0 +1,352 @@
+---
+import { Phone, Mail, MapPin, Clock, Facebook, ChevronRight, ArrowUp, Layers, Award, Images, Calculator, FileText } from 'lucide-react';
+
+const currentYear = new Date().getFullYear();
+
+const servicesLinks = [
+  { href: '/uslugi/ukladanie-plytek-wielkoformatowych', label: 'Układanie Płytek Wielkoformatowych' },
+  { href: '/uslugi/remonty-lazienek-pod-klucz', label: 'Remonty Łazienek Pod Klucz' },
+  { href: '/uslugi/ciecie-45-gierowanie', label: 'Cięcie Precyzyjne i Gierowanie 45°' },
+  { href: '/uslugi/wykonczenia-wnetrz-posadzki', label: 'Wykończenia Wnętrz i Posadzki' },
+  { href: '/uslugi/hydroizolacja-tarasy-balkony', label: 'Hydroizolacja i Tarasy/Balkony' },
+  { href: '/uslugi/wylewki-samopoziomujace', label: 'Wylewki i Przygotowanie Podłoża' },
+];
+
+const companyLinks = [
+  { href: '/o-firmie', label: 'O firmie', icon: Award },
+  { href: '/realizacje', label: 'Realizacje', icon: Images },
+  { href: '/kalkulator', label: 'Kalkulator', icon: Calculator },
+  { href: '/kontakt', label: 'Kontakt', icon: Mail },
+];
+---
+
+<footer class="site-footer">
+  <div class="container-custom footer-top section-padding">
+    <div class="footer-grid">
+
+      <!-- Column 1: Brand & NAP -->
+      <div class="footer-col footer-brand-col">
+        <a href="/" class="footer-logo">
+          <span class="brand-title">TSS PŁYTKI</span>
+          <span class="brand-subtitle">Władysław Kuchnia</span>
+        </a>
+        <p class="brand-desc">
+          Precyzyjne układanie płytek, wielki format, gierowanie 45° i kompleksowe remonty łazienek pod klucz w Krakowie i całej Małopolsce. 25+ lat doświadczenia.
+        </p>
+
+        <ul class="nap-info-list">
+          <li>
+            <MapPin size={18} class="nap-icon" />
+            <span>Węglówka 104, 32-412 Węglówka</span>
+          </li>
+          <li>
+            <Phone size={18} class="nap-icon" />
+            <a href="tel:603100978" class="nap-link">603 100 978</a>
+          </li>
+          <li>
+            <Mail size={18} class="nap-icon" />
+            <a href="mailto:tssplytki@gmail.com" class="nap-link">tssplytki@gmail.com</a>
+          </li>
+          <li>
+            <Clock size={18} class="nap-icon" />
+            <span>Pon–Pt: 07:00 – 17:00 (Sob–Nd: zamknięte)</span>
+          </li>
+          <li>
+            <FileText size={18} class="nap-icon" />
+            <span>NIP: 681-135-28-13</span>
+          </li>
+        </ul>
+
+        <div class="social-links">
+          <a href="https://www.facebook.com/tssplytki/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Odwiedź nasz profil na Facebooku">
+            <Facebook size={18} />
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Usługi -->
+      <div class="footer-col">
+        <h4 class="footer-heading">
+          <Layers size={18} class="text-gold" />
+          <span>Nasze Usługi</span>
+        </h4>
+        <ul class="footer-links-list">
+          {servicesLinks.map((link) => (
+            <li>
+              <a href={link.href} class="footer-link">
+                <ChevronRight size={14} class="link-chevron" />
+                <span>{link.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 3: Nawigacja -->
+      <div class="footer-col">
+        <h4 class="footer-heading">
+          <Award size={18} class="text-gold" />
+          <span>Firma & Nawigacja</span>
+        </h4>
+        <ul class="footer-links-list">
+          {companyLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <li>
+                <a href={link.href} class="footer-link">
+                  <Icon size={14} class="link-chevron" />
+                  <span>{link.label}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <!-- Column 4: Obszar działania -->
+      <div class="footer-col">
+        <h4 class="footer-heading">
+          <MapPin size={18} class="text-gold" />
+          <span>Obszar Działań</span>
+        </h4>
+        <p class="area-text">
+          Pracujemy w Krakowie oraz na terenie całej Maopolski:
+        </p>
+        <div class="area-tags">
+          <span class="area-tag primary">Kraków</span>
+          <span class="area-tag">Węglówka</span>
+          <span class="area-tag">Wiśniowa</span>
+          <span class="area-tag">Myślenice</span>
+          <span class="area-tag">Dobczyce</span>
+          <span class="area-tag">Rabka-Zdrój</span>
+          <span class="area-tag">Mszana Dolna</span>
+          <span class="area-tag">Limanowa</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container-custom footer-bottom-inner">
+      <p>© {currentYear} TSS Płytki — Władysław Kuchnia. Wszystkie prawa zastrzeżone.</p>
+      
+      <button id="scroll-to-top" class="scroll-top-btn" aria-label="Wróć na górę strony">
+        <ArrowUp size={18} />
+        <span>Na górę</span>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: #080B10;
+    border-top: 1px solid var(--border-stone);
+    margin-top: auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1.1fr 0.9fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand-col .brand-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-main);
+  }
+
+  .footer-brand-col .brand-subtitle {
+    font-size: 0.8rem;
+    color: var(--accent-travertine);
+    font-weight: 600;
+  }
+
+  .brand-desc {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .nap-info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nap-info-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  .nap-icon {
+    color: var(--accent-travertine);
+    flex-shrink: 0;
+  }
+
+  .nap-link:hover {
+    color: var(--accent-travertine);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.85rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-stone);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+
+  }
+
+  .social-btn:hover {
+    border-color: var(--accent-travertine);
+    color: var(--accent-travertine);
+
+  }
+
+  .footer-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-stone);
+  }
+
+  .footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .footer-link:hover {
+    color: var(--accent-travertine);
+
+  }
+
+  .link-chevron {
+    color: var(--accent-travertine);
+    flex-shrink: 0;
+  }
+
+  .area-text {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .area-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .area-tag {
+    padding: 0.25rem 0.6rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-stone);
+    border-radius: var(--radius-sm);
+    font-size: 0.775rem;
+    color: var(--text-muted);
+  }
+
+  .area-tag.primary {
+    background-color: rgba(212, 163, 115, 0.15);
+    border-color: var(--accent-travertine);
+    color: var(--accent-travertine);
+    font-weight: 600;
+  }
+
+  .footer-bottom {
+    background-color: #05070A;
+    border-top: 1px solid var(--border-stone);
+    padding: 1.25rem 0;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .scroll-top-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: 1px solid var(--border-stone);
+    color: var(--text-muted);
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.8rem;
+
+  }
+
+  .scroll-top-btn:hover {
+    border-color: var(--accent-travertine);
+    color: var(--accent-travertine);
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .footer-bottom-inner {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  const scrollTopBtn = document.getElementById('scroll-to-top');
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>

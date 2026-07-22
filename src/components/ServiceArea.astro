@@ -1,0 +1,131 @@
+---
+import { MapPin, Phone, CheckCircle2, ArrowRight } from 'lucide-react';
+
+const towns = [
+  { name: 'Kraków', badge: 'Główny obszar prac', highlight: true },
+  { name: 'Węglówka', badge: 'Siedziba firmy', highlight: true },
+  { name: 'Wiśniowa', badge: 'Gmina' },
+  { name: 'Myślenice', badge: 'Powiat' },
+  { name: 'Dobczyce', badge: 'Okolice' },
+  { name: 'Rabka-Zdrój', badge: 'Okolice' },
+  { name: 'Mszana Dolna', badge: 'Okolice' },
+  { name: 'Limanowa', badge: 'Okolice' },
+];
+---
+
+<section class="service-area-section section-padding">
+  <div class="container-custom">
+    <div class="area-card glass-card">
+      <div class="area-header">
+        <span class="badge badge-gold">Obszar Działań</span>
+        <h2>Gdzie realizujemy projekty glazurnicze</h2>
+        <p>Najwięcej prac kończymy w Krakowie, a nasza zarejestrowana siedziba mieści się w Węglówce. Działamy sprawnie w całej Małopolsce.</p>
+      </div>
+
+      <div class="towns-grid">
+        {towns.map((town) => (
+          <div class={`town-item ${town.highlight ? 'highlight' : ''}`}>
+            <MapPin size={20} class="town-icon text-gold" />
+            <div class="town-info">
+              <strong>{town.name}</strong>
+              <small>{town.badge}</small>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="area-footer">
+        <p class="area-callout">
+          <CheckCircle2 size={18} class="text-emerald" />
+          <span>Nie widzisz swojej miejscowości? Zadzwoń — dojazd ustalamy indywidualnie.</span>
+        </p>
+
+        <a href="tel:603100978" class="btn btn-primary">
+          <Phone size={18} />
+          <span>Zadzwoń: 603 100 978</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .area-card {
+    padding: 3rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-surface) 100%);
+  }
+
+  .area-header {
+    max-width: 680px;
+    margin: 0 auto 2.5rem auto;
+  }
+
+  .area-header h2 {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .towns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .town-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-stone);
+    border-radius: var(--radius-md);
+    text-align: left;
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
+  }
+
+  .town-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-travertine);
+  }
+
+  .town-item.highlight {
+    border-color: var(--accent-travertine);
+    background: rgba(212, 163, 115, 0.08);
+  }
+
+  .town-info strong {
+    display: block;
+    color: var(--text-main);
+    font-size: 1.05rem;
+  }
+
+  .town-info small {
+    color: var(--accent-travertine);
+    font-size: 0.775rem;
+    font-weight: 600;
+  }
+
+  .area-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border-stone);
+  }
+
+  .area-callout {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-main);
+  }
+
+  @media (max-width: 640px) {
+    .area-card { padding: 1.75rem; }
+    .towns-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

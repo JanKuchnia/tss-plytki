@@ -1,0 +1,244 @@
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { Sliders, Eye, MoveHorizontal } from 'lucide-react';
+
+export default function BeforeAfterSlider({
+  beforeImage = "/images/before.jpeg",
+  afterImage = "/images/after.jpeg",
+  beforeLabel = "Stan surowy / Wyburzenia",
+  afterLabel = "Gotowa łazienka z gierowaniem 45°",
+  caption = "Przesuń suwak, by zobaczyć przemianę — od skucia starych płytek po gotową łazienkę z gierowanym narożnikiem."
+}) {
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef(null);
+
+  const handleMove = useCallback((clientX) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    let percentage = (x / rect.width) * 100;
+    if (percentage < 0) percentage = 0;
+    if (percentage > 100) percentage = 100;
+    setSliderPosition(percentage);
+  }, []);
+
+  const handleTouchMove = useCallback((e) => {
+    if (!isDragging) return;
+    handleMove(e.touches[0].clientX);
+  }, [isDragging, handleMove]);
+
+  const handleMouseMove = useCallback((e) => {
+    if (!isDragging) return;
+    handleMove(e.clientX);
+  }, [isDragging, handleMove]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleTouchMove);
+      window.addEventListener('touchend', handleMouseUp);
+    }
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleMouseUp);
+    };
+  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove]);
+
+  return (
+    <div className="before-after-wrapper">
+      <div 
+        ref={containerRef}
+        className="before-after-container"
+        onMouseDown={() => setIsDragging(true)}
+        onTouchStart={() => setIsDragging(true)}
+      >
+        {/* After Image (Background) */}
+        <img 
+          src={afterImage} 
+          alt={afterLabel} 
+          className="after-image"
+          loading="eager"
+        />
+        {/* Stationary Top Labels */}
+        <span className="slider-label label-before">
+          <Sliders size={14} />
+          {beforeLabel}
+        </span>
+        <span className="slider-label label-after">
+          <Eye size={14} className="icon-gold" />
+          {afterLabel}
+        </span>
+
+        {/* Before Image (Clipped Foreground) */}
+        <div 
+          className="before-image-clip" 
+          style={{ width: `${sliderPosition}%` }}
+        >
+          <img 
+            src={beforeImage} 
+            alt={beforeLabel} 
+            className="before-image" 
+            style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%' }}
+            loading="eager"
+          />
+        </div>
+
+        {/* Divider Bar & Handle */}
+        <div 
+          className="slider-divider" 
+          style={{ left: `${sliderPosition}%` }}
+        >
+          <div className="slider-handle" aria-label="Przesuń suwak przed i po">
+            <MoveHorizontal size={20} />
+          </div>
+        </div>
+      </div>
+
+      {caption && (
+        <p className="slider-caption">
+          <Sliders size={15} className="caption-icon" />
+          <span>{caption}</span>
+        </p>
+      )}
+
+      <style>{`
+        .before-after-wrapper {
+          width: 100%;
+        }
+
+        .before-after-container {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          border: 1px solid var(--border-stone);
+          user-select: none;
+          cursor: ew-resize;
+          box-shadow: var(--shadow-lg);
+          background-color: var(--bg-card);
+        }
+
+        .after-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .before-image-clip {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          overflow: hidden;
+          z-index: 2;
+        }
+
+        .before-image {
+          height: 100%;
+          max-width: none;
+          object-fit: cover;
+        }
+
+        .slider-label {
+          position: absolute;
+          top: 1rem;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          padding: 0.4rem 0.85rem;
+          border-radius: var(--radius-full);
+          font-size: 0.8rem;
+          font-weight: 700;
+          backdrop-filter: blur(8px);
+          z-index: 6;
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+          pointer-events: none;
+        }
+
+        .label-after {
+          right: 1rem;
+          background: rgba(13, 17, 23, 0.85);
+          color: var(--text-main);
+          border: 1px solid var(--border-gold);
+        }
+
+        .label-before {
+          left: 1rem;
+          background: rgba(13, 17, 23, 0.85);
+          color: var(--text-muted);
+          border: 1px solid var(--border-stone);
+        }
+
+        .icon-gold {
+          color: var(--accent-travertine);
+        }
+
+        .slider-divider {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 3px;
+          background: var(--accent-travertine);
+          z-index: 5;
+          transform: translateX(-50%);
+          box-shadow: 0 0 12px rgba(212, 163, 115, 0.6);
+        }
+
+        .slider-handle {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: var(--accent-travertine);
+          color: #0D1117;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+          border: 3px solid #0D1117;
+        }
+
+        .slider-caption {
+          margin-top: 0.85rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.875rem;
+          color: var(--text-muted);
+          justify-content: center;
+          text-align: center;
+        }
+
+        .caption-icon {
+          color: var(--accent-travertine);
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+          .before-after-container {
+            aspect-ratio: 1 / 1;
+          }
+          .slider-label {
+            font-size: 0.725rem;
+            padding: 0.3rem 0.6rem;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}

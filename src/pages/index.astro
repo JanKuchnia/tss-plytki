@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import BeforeAfterSlider from '../components/BeforeAfterSlider.jsx';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import WhyUs from '../components/WhyUs.astro';
+import ProjectWizard from '../components/ProjectWizard.jsx';
+import Gallery from '../components/Gallery.jsx';
+import Reviews from '../components/Reviews.astro';
+import TileCalculator from '../components/TileCalculator.jsx';
+import Process from '../components/Process.astro';
+import ServiceArea from '../components/ServiceArea.astro';
+import Faq from '../components/Faq.astro';
+import QuickQuoteCTA from '../components/QuickQuoteCTA.astro';
+
+import { Phone, Images, ShieldCheck, Ruler, Award, Zap, MapPin, ArrowRight } from 'lucide-react';
+---
+
+<Layout 
+  title="Glazurnik Kraków i Małopolska | TSS Płytki — Remonty Łazienek"
+  description="TSS Płytki — precyzyjne układanie płytek, remonty łazienek pod klucz i hydroizolacja w Krakowie i całej Małopolsce. 25+ lat doświadczenia. Zadzwoń: 603 100 978."
+>
+  <Navbar slot="navbar" />
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="container-custom hero-container">
+      <div class="hero-grid">
+
+        <!-- Hero Text & CTAs -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <MapPin size={16} class="text-gold" />
+            <span>Kraków & Cała Małopolska</span>
+          </div>
+
+          <h1>Precyzyjne układanie płytek i remonty łazienek w Krakowie i Małopolsce</h1>
+
+          <p class="hero-subheadline">
+            Gierowanie 45°, wielki format, pełna hydroizolacja — rzemiosło, które widać w każdym rogu. <strong>Władysław Kuchnia</strong> — 25+ lat osobistego doświadczenia w branży — i zespół TSS Płytki realizują remonty łazienek, tarasów i posadzek pod klucz w Krakowie i na terenie całej Małopolski.
+          </p>
+
+          <!-- Trust Badges List -->
+          <div class="hero-trust-grid">
+            <div class="trust-item">
+              <ShieldCheck size={18} class="text-emerald" />
+              <span>100% gwarancja szczelności hydroizolacji</span>
+            </div>
+            <div class="trust-item">
+              <Ruler size={18} class="text-gold" />
+              <span>Cięcie i gierowanie 45° bez listw</span>
+            </div>
+            <div class="trust-item">
+              <Award size={18} class="text-gold" />
+              <span>25+ lat doświadczenia w branży</span>
+            </div>
+            <div class="trust-item">
+              <Zap size={18} class="text-gold" />
+              <span>Szybka realizacja bez utraty jakości</span>
+            </div>
+          </div>
+
+          <!-- Hero CTAs -->
+          <div class="hero-actions">
+            <a href="tel:603100978" class="btn btn-primary btn-lg">
+              <Phone size={20} />
+              <span>Zadzwoń po bezpłatną wycenę</span>
+            </a>
+            <a href="/realizacje" class="btn btn-secondary btn-lg">
+              <Images size={20} />
+              <span>Zobacz realizacje</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Interactive Before/After Slider -->
+        <div class="hero-visual">
+          <BeforeAfterSlider 
+            client:load 
+            beforeImage="/images/before.jpeg"
+            afterImage="/images/after.jpeg"
+            beforeLabel="Stan surowy / Wyburzenia"
+            afterLabel="Gotowa łazienka z gierowaniem 45°"
+            caption="Przesuń suwak, by zobaczyć przemianę — od skucia starych płytek po gotową łazienkę z gierowanym narożnikiem."
+          />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES OVERVIEW GRID -->
+  <ServicesGrid />
+
+  <!-- WHY US / CRAFTSMANSHIP STANDARDS -->
+  <WhyUs />
+
+  <!-- INTERACTIVE PROJECT PLANNER WIZARD -->
+  <section class="section-padding bg-surface-wrap" id="kreator">
+    <div class="container-custom">
+      <div class="section-header">
+        <span class="badge badge-gold">Wycena On-Line</span>
+        <h2>Kreator projektu i darmowa wycena</h2>
+        <p>Kilka pytań o pomieszczenie, format płytek i stan obecny — gotowe zapytanie trafia bezpośrednio do nas.</p>
+      </div>
+
+      <ProjectWizard client:visible />
+    </div>
+  </section>
+
+  <!-- PORTFOLIO TEASER -->
+  <section class="section-padding" id="realizacje">
+    <div class="container-custom">
+      <div class="section-header">
+        <span class="badge badge-gold">Portfolio</span>
+        <h2>Ostatnie realizacje</h2>
+        <p>Kilka wybranych projektów z Krakowa, Węglówki i okolic — pełna galeria z filtrowaniem czeka na osobnej stronie.</p>
+      </div>
+
+      <Gallery client:visible limit={6} />
+
+      <div class="center-cta-wrap">
+        <a href="/realizacje" class="btn btn-secondary btn-lg">
+          <span>Zobacz wszystkie realizacje</span>
+          <ArrowRight size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS -->
+  <Reviews />
+
+  <!-- INTERACTIVE TILE CALCULATOR -->
+  <section class="section-padding bg-surface-wrap" id="kalkulator">
+    <div class="container-custom">
+      <TileCalculator client:visible />
+    </div>
+  </section>
+
+  <!-- 5-STEP PROCESS TIMELINE -->
+  <Process />
+
+  <!-- REGIONAL COVERAGE MAP -->
+  <ServiceArea />
+
+  <!-- FAQ ACCORDION -->
+  <Faq />
+
+  <!-- REUSABLE QUICK QUOTE CTA BANNER -->
+  <QuickQuoteCTA />
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+    background: radial-gradient(circle at 80% 20%, rgba(212, 163, 115, 0.08) 0%, transparent 60%);
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--accent-travertine);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subheadline {
+    font-size: 1.1rem;
+    line-height: 1.65;
+    margin-top: 1.25rem;
+    margin-bottom: 1.75rem;
+    color: var(--text-muted);
+  }
+
+  .hero-trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .bg-surface-wrap {
+    background-color: #0B0E14;
+    border-top: 1px solid var(--border-stone);
+    border-bottom: 1px solid var(--border-stone);
+  }
+
+  .center-cta-wrap {
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-trust-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-actions {
+      flex-direction: column;
+    }
+    .hero-actions .btn {
+      width: 100%;
+    }
+  }
+</style>

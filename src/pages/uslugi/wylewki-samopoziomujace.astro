@@ -1,0 +1,228 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import QuickQuoteCTA from '../../components/QuickQuoteCTA.astro';
+
+import { Layers, CheckCircle2, Phone, Ruler, ShieldCheck } from 'lucide-react';
+
+const scope = [
+  {
+    title: 'Szlifowanie Powierzchni Podłoża',
+    desc: 'Usunięcie starych powłok, mleczka cementowego, luźnych fragmentów i uskoków przed dalszymi etapami.'
+  },
+  {
+    title: 'Gruntowanie Głęboko Penetrujące',
+    desc: 'Wzmocnienie podłoża, wyrównanie chłonności i odcinanie pęcherzy powietrznych pod masę samopoziomującą.'
+  },
+  {
+    title: 'Aplikacja Masy Samopoziomującej',
+    desc: 'Wylewanie mas o odpowiedniej wytrzymałości na ściskanie (np. C20/C30) dostosowanych pod ogrzewanie podłogowe.'
+  },
+  {
+    title: 'Kontrola Płaszczyzny Poziomicą Laserową',
+    desc: 'Milimetrowa weryfikacja płaszczyzny na całej powierzchni — kluczowa przed ułożeniem płyt 120x120 cm.'
+  }
+];
+---
+
+<Layout 
+  title="Wylewki Samopoziomujące | Przygotowanie Podłoża — TSS Płytki"
+  description="Szlifowanie, gruntowanie i wylewki samopoziomujące z kontrolą poziomu laserem — solidny fundament pod płytki wielkoformatowe. Kraków."
+>
+  <Navbar slot="navbar" />
+
+  <section class="page-hero section-padding">
+    <div class="container-custom">
+      <div class="hero-badge">
+        <Layers size={16} class="text-gold" />
+        <span>Przygotowanie Podłoża</span>
+      </div>
+      <h1>Wylewki i przygotowanie podłoża</h1>
+      <p class="page-intro">
+        Najładniejsza płytka wielkoformatowa nie utrzyma się na krzywym, niedogruntowanym podłożu. Ten etap jest niewidoczny w gotowym pomieszczeniu, ale to od niego zależy, czy montaż w ogóle się powiedzie.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-surface-wrap">
+    <div class="container-custom">
+      <div class="service-detail-grid">
+
+        <div class="detail-main">
+          <div class="glass-card detail-card">
+            <h2>Prawidłowe przygotowanie podłoża pod płytki</h2>
+            <p className="lead-p">
+              Bez idealnie równego i sztywnego podkładu płyta wielkoformatowa pęka pod naciskiem mebli lub stóp. Sprawdzamy stan jastrychu zanim otworzymy pierwszą paczkę z płytkami.
+            </p>
+
+            <div class="scope-grid">
+              {scope.map(s => (
+                <div class="scope-card">
+                  <CheckCircle2 size={20} class="text-gold scope-icon" />
+                  <div>
+                    <strong>{s.title}</strong>
+                    <p>{s.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="glass-card detail-card margin-top">
+            <h3>Kiedy wylewka jest niezbędna?</h3>
+            <p>
+              Przy każdym montażu gresu wielkoformatowego (120x120 cm+), w starym budownictwie z krzywymi posadzkami oraz przy skuwaniu starych wylewek pod brodzik walk-in z odpływem liniowym.
+            </p>
+          </div>
+        </div>
+
+        <div class="detail-sidebar">
+          <div class="glass-card visual-card">
+            <img src="/images/gallery-12.jpeg" alt="Wylewka samopoziomująca i laserowe poziomowanie podłoża" />
+            <div class="card-caption">
+              <strong>Kontrola Laserem</strong>
+              <small>Laserowy pomiar równości przed montażem spieków</small>
+            </div>
+          </div>
+
+          <div class="glass-card sidebar-cta-box">
+            <Ruler size={28} class="text-gold" />
+            <h4>Darmowy pomiar poziomu</h4>
+            <p>Przyjedziemy z poziomicą laserową i ocenimy stan Twojego podłoża.</p>
+            <a href="tel:603100978" class="btn btn-primary btn-sm w-full">
+              <Phone size={16} />
+              <span>Zadzwoń: 603 100 978</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <QuickQuoteCTA 
+    title="Nie wiesz, czy Twoje podłoże wymaga wylewki?" 
+    subtitle="Zadzwoń do nas: 603 100 978 — umówimy bezpłatne oględziny na miejscu."
+  />
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    background: radial-gradient(circle at 50% 20%, rgba(212, 163, 115, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--accent-travertine);
+    margin-bottom: 1rem;
+  }
+
+  .page-intro {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    max-width: 780px;
+    margin: 1rem auto 0 auto;
+    color: var(--text-muted);
+  }
+
+  .bg-surface-wrap {
+    background-color: #0B0E14;
+    border-top: 1px solid var(--border-stone);
+    border-bottom: 1px solid var(--border-stone);
+  }
+
+  .service-detail-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .detail-card {
+    padding: 2.25rem;
+  }
+
+  .lead-p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+  }
+
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .scope-card {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1.1rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-stone);
+    border-radius: var(--radius-md);
+  }
+
+  .scope-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .scope-card strong {
+    display: block;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .scope-card p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .margin-top { margin-top: 1.75rem; }
+
+  .visual-card {
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .visual-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .card-caption {
+    padding: 1rem 1.25rem;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-stone);
+  }
+
+  .sidebar-cta-box {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .w-full { width: 100%; }
+
+  @media (max-width: 900px) {
+    .service-detail-grid { grid-template-columns: 1fr; }
+  }
+</style>

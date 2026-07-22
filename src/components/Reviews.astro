@@ -1,0 +1,152 @@
+---
+import { Star, MessageSquare, ExternalLink, Facebook } from 'lucide-react';
+---
+
+<section class="reviews-section section-padding">
+  <div class="container-custom">
+    <div class="section-header">
+      <span class="badge badge-gold">Opinie Klientów</span>
+      <h2>Co mówią nasi klienci</h2>
+      <p>Prawdziwe zdania od osób, u których ukończyliśmy prace glazurnicze i remontowe.</p>
+    </div>
+
+    <div class="reviews-wrapper">
+      <div class="review-card glass-card">
+        <div class="stars-row">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={18} class="star-icon fill-gold" />
+          ))}
+        </div>
+
+        <blockquote class="review-quote">
+          „Polecam. Porządna firma."
+        </blockquote>
+
+        <div class="review-author-row">
+          <div class="author-avatar">SD</div>
+          <div>
+            <strong class="author-name">Szymon Dudek</strong>
+            <span class="review-source">Opinia z Google · 5.0 / 5.0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-invite-box">
+      <MessageSquare size={20} class="text-gold" />
+      <p>
+        Dopiero zaczynamy zbierać opinie online — jeśli byliśmy u Ciebie, wystaw opinię na 
+        <a href="https://www.google.com/search?q=TSS+P%C5%82ytki+W%C5%82adys%C5%82aw+Kuchnia" target="_blank" rel="noopener noreferrer" class="invite-link">
+          <span>Google</span>
+          <ExternalLink size={14} />
+        </a>
+        lub odwiedź nasz profil na 
+        <a href="https://www.facebook.com/tssplytki/" target="_blank" rel="noopener noreferrer" class="invite-link">
+          <span>Facebooku</span>
+          <Facebook size={14} />
+        </a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-wrapper {
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+  }
+
+  .review-card {
+    padding: 2.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .stars-row {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .star-icon.fill-gold {
+    color: var(--accent-travertine);
+    fill: var(--accent-travertine);
+  }
+
+  .review-quote {
+    font-size: 1.35rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text-main);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .review-author-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .author-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--accent-copper);
+    color: #0D1117;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .author-name {
+    display: block;
+    color: var(--text-main);
+    font-size: 1rem;
+  }
+
+  .review-source {
+    font-size: 0.825rem;
+    color: var(--text-muted);
+  }
+
+  .reviews-invite-box {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.25rem 1.75rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-stone);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.925rem;
+  }
+
+  .invite-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--accent-travertine);
+    font-weight: 700;
+    margin: 0 0.25rem;
+  }
+
+  .invite-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .reviews-invite-box {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>

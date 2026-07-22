@@ -1,0 +1,123 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "Glazurnik Kraków i Małopolska | TSS Płytki — Remonty Łazienek",
+  description = "TSS Płytki — precyzyjne układanie płytek, remonty łazienek pod klucz i hydroizolacja w Krakowie i całej Małopolsce. 25+ lat doświadczenia. Zadzwoń: 603 100 978.",
+  image = "/images/after.jpeg",
+  canonicalURL = "https://tssplytki.pl"
+} = Astro.props;
+
+const siteUrl = Astro.site?.origin || "https://tssplytki.pl";
+const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "TSS Płytki — Władysław Kuchnia",
+  "image": fullImageUrl,
+  "telephone": "+48603100978",
+  "email": "tssplytki@gmail.com",
+  "vatID": "681-135-28-13",
+  "taxID": "681-135-28-13",
+  "sameAs": [
+    "https://www.facebook.com/tssplytki/"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Węglówka 104",
+    "addressLocality": "Węglówka",
+    "postalCode": "32-412",
+    "addressRegion": "Małopolskie",
+    "addressCountry": "PL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.7781,
+    "longitude": 20.0769
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "17:00"
+    }
+  ],
+  "areaServed": [
+    "Kraków",
+    "Węglówka",
+    "Wiśniowa",
+    "Myślenice",
+    "Dobczyce",
+    "Rabka-Zdrój",
+    "Mszana Dolna",
+    "Limanowa"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Szymon Dudek" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "Polecam. Porządna firma."
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageUrl} />
+    <meta property="og:locale" content="pl_PL" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={fullImageUrl} />
+
+    <!-- Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot name="navbar" />
+    <main>
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

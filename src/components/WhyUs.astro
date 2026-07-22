@@ -1,0 +1,166 @@
+---
+import { ShieldCheck, CheckCircle2, Flame, Award, Zap, Phone } from 'lucide-react';
+
+const points = [
+  {
+    title: 'Zero plastikowych i metalowych profili',
+    desc: 'Czyste gierowanie 45° na zewnętrznych narożnikach. Kamień styka się z kamieniem bez elementów, które wyblakną lub odpadną.'
+  },
+  {
+    title: 'Laserowe poziomowanie przed montażem',
+    desc: 'Sprawdzamy płaszczyznę poziomicą laserową zanim położymy pierwszą płytkę. Bez układania „na oko".'
+  },
+  {
+    title: 'Precyzyjne cięcie na mokro',
+    desc: 'Używamy profesjonalnych przecinarek wodnych z tarczami diamentowymi — minimalizujemy pył krzemowy na budowie.'
+  },
+  {
+    title: 'Jeden kontakt, pełna odpowiedzialność',
+    desc: 'Władysław Kuchnia nadzoruje projekt od pierwszej wylewki i hydroizolacji po Ostatnią silikonową fugę.'
+  },
+  {
+    title: 'Sprawna i przewidywalna realizacja',
+    desc: '25+ lat doświadczenia oznacza brak przestojów, właściwą technologię schnięcia i czysty odbior prac.'
+  }
+];
+---
+
+<section class="why-us-section section-padding">
+  <div class="container-custom">
+    <div class="why-us-grid">
+
+      <div class="why-us-content">
+        <span class="badge badge-gold">Standard Wykonania</span>
+        <h2>Standard, który widać po latach — nie po tygodniu</h2>
+        
+        <p class="lead-text">
+          Tanie ekipy kończą na plastikowym narożniku i „jakoś to wygląda". My kończymy na gierowaniu 45° — kamień styka się z kamieniem, bez listwy, która się odbarwi i odpadnie po dwóch zimach.
+        </p>
+
+        <ul class="points-list">
+          {points.map((point) => (
+            <li>
+              <CheckCircle2 size={22} class="point-icon text-gold" />
+              <div>
+                <strong>{point.title}</strong>
+                <p>{point.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <div class="why-us-cta">
+          <a href="tel:603100978" class="btn btn-primary">
+            <Phone size={18} />
+            <span>Skonsultuj swój projekt: 603 100 978</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="why-us-visual">
+        <div class="visual-card glass-card">
+          <img 
+            src="/images/gallery-3.png" 
+            alt="Narożnik gierowany pod kątem 45 stopni — bez profilu plastikowego" 
+            loading="lazy" 
+          />
+          <div class="visual-caption">
+            <Award size={18} class="text-gold" />
+            <div>
+              <strong>Gierowanie 45° w praktyce</strong>
+              <small>Narożnik prysznica docięty tarczą diamentową bez listwy plastikowej</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-us-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .lead-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: var(--text-main);
+  }
+
+  .points-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    margin-bottom: 2rem;
+  }
+
+  .points-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .point-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .points-list strong {
+    display: block;
+    color: var(--text-main);
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .points-list p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .why-us-visual .visual-card {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .why-us-visual img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .visual-caption {
+    padding: 1.25rem;
+    background-color: var(--bg-surface);
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    border-top: 1px solid var(--border-stone);
+  }
+
+  .visual-caption strong {
+    display: block;
+    color: var(--text-main);
+    font-size: 0.95rem;
+  }
+
+  .visual-caption small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 900px) {
+    .why-us-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

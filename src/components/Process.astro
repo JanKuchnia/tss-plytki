@@ -1,0 +1,119 @@
+---
+import { Ruler, FileSpreadsheet, ShieldAlert, Wrench, CheckCircle2, ChevronRight } from 'lucide-react';
+
+const steps = [
+  {
+    step: '01',
+    icon: Ruler,
+    title: 'Pomiar i oględziny',
+    desc: 'Oglądamy pomieszczenie, mierzymy metraż, sprawdzamy wilgotność oraz poziom podłoża i stan instalacji.'
+  },
+  {
+    step: '02',
+    icon: FileSpreadsheet,
+    title: 'Przejrzysty kosztorys',
+    desc: 'Dostajesz jasną wycenę materiałów i robocizny. Bez ukrytych pozycji i niespodziewanych dopłat.'
+  },
+  {
+    step: '03',
+    icon: ShieldAlert,
+    title: 'Hydroizolacja stref mokrych',
+    desc: 'W łazienkach i na tarasach stosujemy folie w płynie, taśmy i mankiety uszczelniające zanim ruszy montaż.'
+  },
+  {
+    step: '04',
+    icon: Wrench,
+    title: 'Montaż, cięcie i gierowanie 45°',
+    desc: 'Układanie płytek z milimetrową dokładnością, laserowa kontrola płaszczyzny i szlifowanie narożników.'
+  },
+  {
+    step: '05',
+    icon: CheckCircle2,
+    title: 'Fugowanie i czysty odbiór',
+    desc: 'Wypełnienie spoin, silikonowanie krawędzi, sprzątnięty plac budowy i wspólny odbiór z gwarancją.'
+  }
+];
+---
+
+<section class="process-section section-padding">
+  <div class="container-custom">
+    <div class="section-header">
+      <span class="badge badge-gold">Proces Realizacji</span>
+      <h2>Jak wygląda współpraca</h2>
+      <p>5 przejrzystych kroków od pierwszego telefonu po gotową łazienkę bez niespodzianek.</p>
+    </div>
+
+    <div class="process-timeline">
+      {steps.map((item, index) => {
+        const Icon = item.icon;
+        return (
+          <div class="process-step-card glass-card">
+            <div class="step-top-row">
+              <span class="step-num">{item.step}</span>
+              <div class="step-icon-wrap">
+                <Icon size={22} class="text-gold" />
+              </div>
+            </div>
+
+            <h4>{item.title}</h4>
+            <p>{item.desc}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .process-step-card {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    position: relative;
+  }
+
+  .step-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-travertine);
+    opacity: 0.6;
+    line-height: 1;
+  }
+
+  .step-icon-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-stone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .process-step-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+  }
+
+  .process-step-card p {
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+</style>

@@ -1,0 +1,233 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import QuickQuoteCTA from '../../components/QuickQuoteCTA.astro';
+
+import { Wrench, CheckCircle2, Phone, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+
+const benefits = [
+  {
+    title: 'Brak Elementu do Odbarwienia',
+    desc: 'Plastikowe profile z czasem żółkną i odstają od koloru płytki. Gierowany narożnik nie ma tego problemu — kamień styka się z kamieniem.'
+  },
+  {
+    title: 'Brak Szczeliny na Brud i Wilgoć',
+    desc: 'Połączenie kant w kant pod kątem 45° nie zostawia kanału, w którym gromadzi się osad czy pleśń, jak pod odklejającym się profilem.'
+  },
+  {
+    title: 'Estetyka Kamieniarska',
+    desc: 'Narożnik wygląda jak jeden bryłowy blok kamienny lub marmurowy — luksusowe wykończenie architektoniczne.'
+  },
+  {
+    title: 'Maksymalna Trwałość',
+    desc: 'Brak elementów plastikowych, które z czasem twardnieją, pękają pod uderzeniem lub poluzowują się od wilgoci.'
+  }
+];
+---
+
+<Layout 
+  title="Gierowanie Płytek 45° | Cięcie Precyzyjne — TSS Płytki"
+  description="Narożniki bez plastikowych listw — gierowanie płytek pod kątem 45° diamentowym ostrzem. Trwały, czysty efekt. TSS Płytki, Kraków."
+>
+  <Navbar slot="navbar" />
+
+  <section class="page-hero section-padding">
+    <div class="container-custom">
+      <div class="hero-badge">
+        <Wrench size={16} class="text-gold" />
+        <span>Rzemieślnicza Precyzja</span>
+      </div>
+      <h1>Cięcie precyzyjne i gierowanie 45°</h1>
+      <p class="page-intro">
+        Plastikowy lub metalowy profil w narożniku to najszybsze rozwiązanie — i najszybciej widać, że jest tanie. Gierowanie pod kątem 45° łączy dwie płytki bezpośrednio, kant w kant.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-padding bg-surface-wrap">
+    <div class="container-custom">
+      <div class="service-detail-grid">
+
+        <div class="detail-main">
+          <div class="glass-card detail-card">
+            <h2>Na czym polega gierowanie płytek?</h2>
+            <p className="lead-p">
+              Krawędź każdej z dwóch płytek spotykających się w narożniku jest docinana chłodzonym wodą diamentowym ostrzem pod kątem 45°, tak że po złożeniu tworzą jedną ciągłą płaszczyznę — dokładnie tak jak w szlachetnym kamieniu naturalnym.
+            </p>
+
+            <div class="benefits-grid">
+              {benefits.map(b => (
+                <div class="benefit-card">
+                  <CheckCircle2 size={20} class="text-gold benefit-icon" />
+                  <div>
+                    <strong>{b.title}</strong>
+                    <p>{b.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="glass-card detail-card margin-top">
+            <h3>Gdzie stosujemy gierowanie 45°?</h3>
+            <p>
+              Narożniki wnękowe pod prysznicem, obudowy wanny, stelaże WC, blaty i parapety z płytek gresowych oraz wykończenia stopni schodowych.
+            </p>
+            <p className="margin-top-sm">
+              <strong>Wymagania techniczne:</strong> gierowanie wymaga płytek o jednolitej masie (gres barwiony w masie lub spiek) i diamentowego cięcia na mokro — oceniamy materiał pod kątem fizycznej możliwości na etapie wyceny.
+            </p>
+          </div>
+        </div>
+
+        <div class="detail-sidebar">
+          <div class="glass-card visual-card">
+            <img src="/images/gallery-8.jpeg" alt="Gierowany narożnik 45 stopni w szarym gresie marmurowym" />
+            <div class="card-caption">
+              <strong>Zbliżenie na Detal 45°</strong>
+              <small>Narożnik docięty diamentem — brak plastikowej listwy</small>
+            </div>
+          </div>
+
+          <div class="glass-card sidebar-cta-box">
+            <Sparkles size={28} class="text-gold" />
+            <h4>Gierowanie bez odprysków</h4>
+            <p>Stosujemy przecinarki chłodzone wodą ze specjalnymi tarczami do twardego gresu.</p>
+            <a href="tel:603100978" class="btn btn-primary btn-sm w-full">
+              <Phone size={16} />
+              <span>Zadzwoń: 603 100 978</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <QuickQuoteCTA 
+    title="Planujesz łazienkę z gierowanymi narożnikami?" 
+    subtitle="Zadzwoń do nas: 603 100 978 — doradzimy przy wyborze płytek i zrobimy darmową wycenę."
+  />
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    background: radial-gradient(circle at 50% 20%, rgba(212, 163, 115, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--accent-travertine);
+    margin-bottom: 1rem;
+  }
+
+  .page-intro {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    max-width: 780px;
+    margin: 1rem auto 0 auto;
+    color: var(--text-muted);
+  }
+
+  .bg-surface-wrap {
+    background-color: #0B0E14;
+    border-top: 1px solid var(--border-stone);
+    border-bottom: 1px solid var(--border-stone);
+  }
+
+  .service-detail-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .detail-card {
+    padding: 2.25rem;
+  }
+
+  .lead-p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .benefit-card {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1.1rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-stone);
+    border-radius: var(--radius-md);
+  }
+
+  .benefit-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .benefit-card strong {
+    display: block;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .benefit-card p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .margin-top { margin-top: 1.75rem; }
+  .margin-top-sm { margin-top: 0.85rem; }
+
+  .visual-card {
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .visual-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .card-caption {
+    padding: 1rem 1.25rem;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-stone);
+  }
+
+  .sidebar-cta-box {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .w-full { width: 100%; }
+
+  @media (max-width: 900px) {
+    .service-detail-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+</style>

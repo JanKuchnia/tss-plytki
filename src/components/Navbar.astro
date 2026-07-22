@@ -1,0 +1,281 @@
+---
+import { Phone, Layers, Images, Award, Calculator, Mail, Menu, X, ChevronRight, Sparkles } from 'lucide-react';
+
+const navLinks = [
+  { href: '/uslugi', label: 'Usługi', icon: Layers },
+  { href: '/realizacje', label: 'Realizacje', icon: Images },
+  { href: '/o-firmie', label: 'O firmie', icon: Award },
+  { href: '/kalkulator', label: 'Kalkulator', icon: Calculator },
+  { href: '/kontakt', label: 'Kontakt', icon: Mail },
+];
+---
+
+<header class="navbar-header" id="navbar">
+  <div class="container-custom navbar-container">
+    <a href="/" class="navbar-brand" aria-label="Strona główna TSS Płytki">
+      <div class="brand-logo-mark">
+        <span class="logo-grid-tile primary"></span>
+        <span class="logo-grid-tile secondary"></span>
+        <span class="logo-grid-tile secondary"></span>
+        <span class="logo-grid-tile accent"></span>
+      </div>
+      <div class="brand-text-wrap">
+        <span class="brand-title">TSS PŁYTKI</span>
+        <span class="brand-subtitle">Władysław Kuchnia</span>
+      </div>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Nawigacja główna">
+      <ul class="nav-list">
+        {navLinks.map((link) => {
+          const Icon = link.icon;
+          return (
+            <li>
+              <a href={link.href} class="nav-link">
+                <Icon size={16} class="nav-icon" />
+                <span>{link.label}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <div class="navbar-actions">
+      <a href="tel:603100978" class="btn btn-primary btn-sm phone-cta">
+        <Phone size={16} />
+        <span>Zadzwoń: 603 100 978</span>
+      </a>
+
+      <button id="mobile-menu-toggle" class="mobile-toggle-btn" aria-label="Otwórz menu mobilne">
+        <Menu size={24} id="menu-icon" />
+        <X size={24} id="close-icon" class="hidden" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <div class="mobile-drawer-inner">
+      <nav class="mobile-nav">
+        <ul>
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <li>
+                <a href={link.href} class="mobile-nav-link">
+                  <span class="mobile-link-left">
+                    <Icon size={20} class="text-gold" />
+                    <span>{link.label}</span>
+                  </span>
+                  <ChevronRight size={18} class="text-muted" />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      <div class="mobile-drawer-footer">
+        <a href="tel:603100978" class="btn btn-primary btn-lg w-full">
+          <Phone size={20} />
+          <span>Zadzwoń: 603 100 978</span>
+        </a>
+        <p class="mobile-hours">Pon–Pt: 07:00 – 17:00</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .navbar-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-stone);
+    transition: background-color var(--transition-normal);
+  }
+
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 76px;
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .brand-logo-mark {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-grid-tile {
+    border-radius: 3px;
+  }
+
+  .logo-grid-tile.primary { background-color: var(--accent-travertine); }
+  .logo-grid-tile.secondary { background-color: var(--bg-card-hover); border: 1px solid var(--border-stone); }
+  .logo-grid-tile.accent { background-color: var(--accent-copper); }
+
+  .brand-text-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--text-main);
+    line-height: 1;
+  }
+
+  .brand-subtitle {
+    font-size: 0.75rem;
+    color: var(--accent-travertine);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .desktop-nav .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.925rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 0.5rem 0.25rem;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-travertine);
+  }
+
+  .nav-link:hover .nav-icon {
+    color: var(--accent-travertine);
+  }
+
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobile-toggle-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .hidden { display: none !important; }
+
+  /* Mobile Drawer */
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 76px);
+    background-color: var(--bg-primary);
+    z-index: 999;
+    padding: 1.5rem;
+    overflow-y: auto;
+
+  }
+
+  .mobile-drawer.open {
+    display: block;
+  }
+
+  .mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-stone);
+    border-radius: var(--radius-md);
+    font-size: 1.05rem;
+    font-weight: 600;
+
+  }
+
+  .mobile-link-left {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .mobile-drawer-footer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mobile-hours {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+
+  .w-full { width: 100%; }
+
+  @media (max-width: 900px) {
+    .desktop-nav { display: none; }
+    .mobile-toggle-btn { display: flex; }
+    .phone-cta span { display: none; }
+    .phone-cta { padding: 0.6rem 0.85rem; }
+  }
+</style>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  if (toggleBtn && drawer && menuIcon && closeIcon) {
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      if (isOpen) {
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+  }
+</script>
