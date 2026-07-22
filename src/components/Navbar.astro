@@ -48,8 +48,12 @@ const navLinks = [
       </a>
 
       <button id="mobile-menu-toggle" class="mobile-toggle-btn" aria-label="Otwórz menu mobilne">
-        <Menu size={24} id="menu-icon" />
-        <X size={24} id="close-icon" class="hidden" />
+        <span id="menu-icon" class="icon-toggle-wrap">
+          <Menu size={24} />
+        </span>
+        <span id="close-icon" class="icon-toggle-wrap hidden">
+          <X size={24} />
+        </span>
       </button>
     </div>
   </div>
@@ -188,6 +192,12 @@ const navLinks = [
     color: var(--text-main);
     cursor: pointer;
     padding: 0.5rem;
+  }
+
+  .icon-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hidden { display: none !important; }
